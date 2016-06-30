@@ -1,0 +1,192 @@
+# scripts to have:
+#	cornas_loadnrun_sc4.pl
+#	noiseq_loadnrun_sc4.pl
+#	noiseq_sc4.R
+#	cornas.R
+
+# files to have:
+#	kidneyliver_counts_noheader.tab
+#	kidneyliver_coverages.tab
+
+
+
+# CORNAS run:
+mkdir CORNAS_run
+cd CORNAS_run
+
+# start runs
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L4Kidney R2L8Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L2Kidney R2L6Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L4Kidney R2L2Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L8Kidney R2L2Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L4Kidney R2L6Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L8Kidney R2L6Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L1Liver R2L3Liver
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L7Liver R2L3Liver
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L1Liver R2L7Liver
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L3Liver R2L4Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L3Liver R2L8Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L3Liver R2L2Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L3Liver R2L6Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L1Liver R2L4Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L1Liver R2L8Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L1Liver R2L2Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L1Liver R2L6Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L7Liver R2L4Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L7Liver R2L8Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L7Liver R2L2Kidney
+perl ../cornas_loadnrun_sc4.pl 99 1.5 ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab  R2L7Liver R2L6Kidney
+
+# extract the DEG calls
+grep "Y" cornas_all_R2L4Kidney.R2L8Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L4Kidney.R2L8Kidney.list
+grep "Y" cornas_all_R2L2Kidney.R2L6Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L2Kidney.R2L6Kidney.list
+grep "Y" cornas_all_R2L4Kidney.R2L2Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L4Kidney.R2L2Kidney.list
+grep "Y" cornas_all_R2L8Kidney.R2L2Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L8Kidney.R2L2Kidney.list
+grep "Y" cornas_all_R2L4Kidney.R2L6Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L4Kidney.R2L6Kidney.list
+grep "Y" cornas_all_R2L8Kidney.R2L6Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L8Kidney.R2L6Kidney.list
+grep "Y" cornas_all_R2L1Liver.R2L3Liver.out  |awk '{print $1}' >CORNAS_DEG_id.R2L1Liver.R2L3Liver.list
+grep "Y" cornas_all_R2L7Liver.R2L3Liver.out  |awk '{print $1}' >CORNAS_DEG_id.R2L7Liver.R2L3Liver.list
+grep "Y" cornas_all_R2L1Liver.R2L7Liver.out  |awk '{print $1}' >CORNAS_DEG_id.R2L1Liver.R2L7Liver.list
+grep "Y" cornas_all_R2L3Liver.R2L4Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L3Liver.R2L4Kidney.list
+grep "Y" cornas_all_R2L3Liver.R2L8Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L3Liver.R2L8Kidney.list
+grep "Y" cornas_all_R2L3Liver.R2L2Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L3Liver.R2L2Kidney.list
+grep "Y" cornas_all_R2L3Liver.R2L6Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L3Liver.R2L6Kidney.list
+grep "Y" cornas_all_R2L1Liver.R2L4Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L1Liver.R2L4Kidney.list
+grep "Y" cornas_all_R2L1Liver.R2L8Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L1Liver.R2L8Kidney.list
+grep "Y" cornas_all_R2L1Liver.R2L2Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L1Liver.R2L2Kidney.list
+grep "Y" cornas_all_R2L1Liver.R2L6Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L1Liver.R2L6Kidney.list
+grep "Y" cornas_all_R2L7Liver.R2L4Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L7Liver.R2L4Kidney.list
+grep "Y" cornas_all_R2L7Liver.R2L8Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L7Liver.R2L8Kidney.list
+grep "Y" cornas_all_R2L7Liver.R2L2Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L7Liver.R2L2Kidney.list
+grep "Y" cornas_all_R2L7Liver.R2L6Kidney.out  |awk '{print $1}' >CORNAS_DEG_id.R2L7Liver.R2L6Kidney.list
+
+cd ..
+
+
+
+# NOISeq run:
+mkdir NOISeq_run
+cd NOISeq_run
+
+
+# get lengths 
+awk '{print $1,$2}' ../kidneyliver_counts_noheader.tab >kidneyliver_lengths.list
+
+# create and run pairs
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L4Kidney R2L8Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L2Kidney R2L6Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L4Kidney R2L2Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L8Kidney R2L2Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L4Kidney R2L6Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L8Kidney R2L6Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L1Liver R2L3Liver
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L7Liver R2L3Liver
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L1Liver R2L7Liver
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L3Liver R2L4Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L3Liver R2L8Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L3Liver R2L2Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L3Liver R2L6Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L1Liver R2L4Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L1Liver R2L8Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L1Liver R2L2Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L1Liver R2L6Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L7Liver R2L4Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L7Liver R2L8Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L7Liver R2L2Kidney
+perl ../noiseq_loadnrun_sc4.pl ../kidneyliver_coverages.tab ../kidneyliver_counts_noheader.tab R2L7Liver R2L6Kidney
+
+# extract the DEG calls
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L4Kidney.R2L8Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L4Kidney.R2L8Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L2Kidney.R2L6Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L2Kidney.R2L6Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L4Kidney.R2L2Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L4Kidney.R2L2Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L8Kidney.R2L2Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L8Kidney.R2L2Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L4Kidney.R2L6Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L4Kidney.R2L6Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L8Kidney.R2L6Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L8Kidney.R2L6Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L1Liver.R2L3Liver.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L1Liver.R2L3Liver.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L7Liver.R2L3Liver.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L7Liver.R2L3Liver.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L1Liver.R2L7Liver.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L1Liver.R2L7Liver.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L3Liver.R2L4Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L3Liver.R2L4Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L3Liver.R2L8Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L3Liver.R2L8Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L3Liver.R2L2Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L3Liver.R2L2Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L3Liver.R2L6Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L3Liver.R2L6Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L1Liver.R2L4Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L1Liver.R2L4Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L1Liver.R2L8Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L1Liver.R2L8Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L1Liver.R2L2Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L1Liver.R2L2Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L1Liver.R2L6Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L1Liver.R2L6Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L7Liver.R2L4Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L7Liver.R2L4Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L7Liver.R2L8Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L7Liver.R2L8Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L7Liver.R2L2Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L7Liver.R2L2Kidney.list
+awk '{if ($6 >= 0.85 && $6!="NA") print $1}' R2L7Liver.R2L6Kidney.counts.tab_noiseq-sim.rpkm.tab >NOISeq_DEG_id.R2L7Liver.R2L6Kidney.list
+
+cd ..
+
+
+
+# GFOLD run:
+mkdir GFOLD_run
+cd GFOLD_run
+
+# create the individual sample counts
+mkdir indv_samples
+awk '{print $1,NA,$3,$2,$3}' ../kidneyliver_counts_noheader.tab >indv_samples/sample_R2L2Kidney.read_cnt
+awk '{print $1,NA,$4,$2,$4}' ../kidneyliver_counts_noheader.tab >indv_samples/sample_R2L4Kidney.read_cnt
+awk '{print $1,NA,$5,$2,$5}' ../kidneyliver_counts_noheader.tab >indv_samples/sample_R2L6Kidney.read_cnt
+awk '{print $1,NA,$6,$2,$6}' ../kidneyliver_counts_noheader.tab >indv_samples/sample_R2L8Kidney.read_cnt
+awk '{print $1,NA,$7,$2,$7}' ../kidneyliver_counts_noheader.tab >indv_samples/sample_R2L1Liver.read_cnt
+awk '{print $1,NA,$8,$2,$8}' ../kidneyliver_counts_noheader.tab >indv_samples/sample_R2L3Liver.read_cnt
+awk '{print $1,NA,$9,$2,$9}' ../kidneyliver_counts_noheader.tab >indv_samples/sample_R2L7Liver.read_cnt
+
+# start runs
+gfold diff -s1 indv_samples/sample_R2L4Kidney -s2 indv_samples/sample_R2L8Kidney -suf .read_cnt -o gfold_comparison.R2L4Kidney.R2L8Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L2Kidney -s2 indv_samples/sample_R2L6Kidney -suf .read_cnt -o gfold_comparison.R2L2Kidney.R2L6Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L4Kidney -s2 indv_samples/sample_R2L2Kidney -suf .read_cnt -o gfold_comparison.R2L4Kidney.R2L2Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L8Kidney -s2 indv_samples/sample_R2L2Kidney -suf .read_cnt -o gfold_comparison.R2L8Kidney.R2L2Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L4Kidney -s2 indv_samples/sample_R2L6Kidney -suf .read_cnt -o gfold_comparison.R2L4Kidney.R2L6Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L8Kidney -s2 indv_samples/sample_R2L6Kidney -suf .read_cnt -o gfold_comparison.R2L8Kidney.R2L6Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L1Liver -s2 indv_samples/sample_R2L3Liver -suf .read_cnt -o gfold_comparison.R2L1Liver.R2L3Liver.diff
+gfold diff -s1 indv_samples/sample_R2L7Liver -s2 indv_samples/sample_R2L3Liver -suf .read_cnt -o gfold_comparison.R2L7Liver.R2L3Liver.diff
+gfold diff -s1 indv_samples/sample_R2L1Liver -s2 indv_samples/sample_R2L7Liver -suf .read_cnt -o gfold_comparison.R2L1Liver.R2L7Liver.diff
+gfold diff -s1 indv_samples/sample_R2L3Liver -s2 indv_samples/sample_R2L4Kidney -suf .read_cnt -o gfold_comparison.R2L3Liver.R2L4Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L3Liver -s2 indv_samples/sample_R2L8Kidney -suf .read_cnt -o gfold_comparison.R2L3Liver.R2L8Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L3Liver -s2 indv_samples/sample_R2L2Kidney -suf .read_cnt -o gfold_comparison.R2L3Liver.R2L2Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L3Liver -s2 indv_samples/sample_R2L6Kidney -suf .read_cnt -o gfold_comparison.R2L3Liver.R2L6Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L1Liver -s2 indv_samples/sample_R2L4Kidney -suf .read_cnt -o gfold_comparison.R2L1Liver.R2L4Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L1Liver -s2 indv_samples/sample_R2L8Kidney -suf .read_cnt -o gfold_comparison.R2L1Liver.R2L8Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L1Liver -s2 indv_samples/sample_R2L2Kidney -suf .read_cnt -o gfold_comparison.R2L1Liver.R2L2Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L1Liver -s2 indv_samples/sample_R2L6Kidney -suf .read_cnt -o gfold_comparison.R2L1Liver.R2L6Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L7Liver -s2 indv_samples/sample_R2L4Kidney -suf .read_cnt -o gfold_comparison.R2L7Liver.R2L4Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L7Liver -s2 indv_samples/sample_R2L8Kidney -suf .read_cnt -o gfold_comparison.R2L7Liver.R2L8Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L7Liver -s2 indv_samples/sample_R2L2Kidney -suf .read_cnt -o gfold_comparison.R2L7Liver.R2L2Kidney.diff
+gfold diff -s1 indv_samples/sample_R2L7Liver -s2 indv_samples/sample_R2L6Kidney -suf .read_cnt -o gfold_comparison.R2L7Liver.R2L6Kidney.diff
+
+# extract the DEG calls
+grep -v "^#" gfold_comparison.R2L4Kidney.R2L8Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L4Kidney.R2L8Kidney.list
+grep -v "^#" gfold_comparison.R2L2Kidney.R2L6Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L2Kidney.R2L6Kidney.list
+grep -v "^#" gfold_comparison.R2L4Kidney.R2L2Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L4Kidney.R2L2Kidney.list
+grep -v "^#" gfold_comparison.R2L8Kidney.R2L2Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L8Kidney.R2L2Kidney.list
+grep -v "^#" gfold_comparison.R2L4Kidney.R2L6Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L4Kidney.R2L6Kidney.list
+grep -v "^#" gfold_comparison.R2L8Kidney.R2L6Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L8Kidney.R2L6Kidney.list
+grep -v "^#" gfold_comparison.R2L1Liver.R2L3Liver.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L1Liver.R2L3Liver.list
+grep -v "^#" gfold_comparison.R2L7Liver.R2L3Liver.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L7Liver.R2L3Liver.list
+grep -v "^#" gfold_comparison.R2L1Liver.R2L7Liver.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L1Liver.R2L7Liver.list
+grep -v "^#" gfold_comparison.R2L3Liver.R2L4Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L3Liver.R2L4Kidney.list
+grep -v "^#" gfold_comparison.R2L3Liver.R2L8Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L3Liver.R2L8Kidney.list
+grep -v "^#" gfold_comparison.R2L3Liver.R2L2Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L3Liver.R2L2Kidney.list
+grep -v "^#" gfold_comparison.R2L3Liver.R2L6Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L3Liver.R2L6Kidney.list
+grep -v "^#" gfold_comparison.R2L1Liver.R2L4Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L1Liver.R2L4Kidney.list
+grep -v "^#" gfold_comparison.R2L1Liver.R2L8Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L1Liver.R2L8Kidney.list
+grep -v "^#" gfold_comparison.R2L1Liver.R2L2Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L1Liver.R2L2Kidney.list
+grep -v "^#" gfold_comparison.R2L1Liver.R2L6Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L1Liver.R2L6Kidney.list
+grep -v "^#" gfold_comparison.R2L7Liver.R2L4Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L7Liver.R2L4Kidney.list
+grep -v "^#" gfold_comparison.R2L7Liver.R2L8Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L7Liver.R2L8Kidney.list
+grep -v "^#" gfold_comparison.R2L7Liver.R2L2Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L7Liver.R2L2Kidney.list
+grep -v "^#" gfold_comparison.R2L7Liver.R2L6Kidney.diff |awk '{if($3 >=0.9){print $1}else if($3 <=-0.9){print $1}}' >GFOLD_DEG_id.R2L7Liver.R2L6Kidney.list
+
+cd ..
+
+
+# identified the genes that were reported to have unique expressions in either Liver or Kidney from liver_kidney_uniq_combined.list using linux grep functions.
+
+# intersects were gathered using linux cat, sort, uniq and wc functions.
+
+# the results are compiled in intersects_combined.tab and kidneyliver_study.xlsx (Table1).

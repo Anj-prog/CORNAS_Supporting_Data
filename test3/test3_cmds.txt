@@ -1,0 +1,1277 @@
+# scripts to have:
+#	grep_fromlist.pl
+#	noiseq_loadnrun_sc3.R
+#	cornas_loadnrun_sc3.pl
+#	cornas.R
+
+# files to have:
+#	allgenes.male.count_table.txt
+#	allgenes.female.count_table.txt
+#	human_genes_lengths.txt
+#	male_cov1.tab
+#	female_cov1.tab
+#	Y19set.list
+#	XiE61set.list
+#	hk11set.list
+#	comparisons_allgenes (DIRECTORY CONTAINING RANDOMIZED OUTPUT USED IN STUDY)
+
+
+# randomly pick the 100 comparisons using R:
+allmale <- read.table("allgenes.male.count_table.txt",sep=" ",header=TRUE)
+allfemale <- read.table("allgenes.female.count_table.txt",sep=" ",header=TRUE)
+for (i in 1:100) {
+	fem <- allfemale[,z[i,1]+1] #female
+	mal <- allmale[,z[i,2]+1] #male
+	table2print <- data.frame(allmale[,1],mal,fem)
+	write.table(table2print, file=paste("comparisons_allgenes/compare_all",z[i,1],z[i,2],"output.tab",sep="_"),sep="\t",row.names=FALSE,col.names=FALSE)
+}
+
+
+# CORNAS run:
+mkdir CORNAS_run
+cd CORNAS_run
+
+#start runs:
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_25_6_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_8_10_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_26_15_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_1_15_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_25_15_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_8_25_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_17_3_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_2_1_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_20_24_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_9_11_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_19_6_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_16_9_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_5_22_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_16_10_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_9_9_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_3_20_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_4_2_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_20_10_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_20_14_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_7_12_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_19_17_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_11_25_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_10_17_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_5_16_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_20_25_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_13_21_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_1_13_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_7_14_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_28_12_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_5_14_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_23_8_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_22_13_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_19_7_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_19_21_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_22_22_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_26_24_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_17_10_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_17_14_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_1_3_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_27_13_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_13_7_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_12_19_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_12_24_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_14_3_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_7_17_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_8_22_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_23_2_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_28_4_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_6_11_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_9_3_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_20_9_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_14_22_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_19_24_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_28_20_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_15_15_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_16_13_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_24_21_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_18_10_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_28_14_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_10_9_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_24_6_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_27_11_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_19_19_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_20_3_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_27_7_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_1_12_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_6_24_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_29_6_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_8_15_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_18_4_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_11_16_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_7_15_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_28_18_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_8_6_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_25_20_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_14_2_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_25_19_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_27_20_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_25_22_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_23_11_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_6_21_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_4_21_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_18_3_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_17_23_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_25_23_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_23_7_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_13_4_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_14_21_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_1_14_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_17_19_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_1_9_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_13_16_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_27_10_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_18_1_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_1_1_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_7_23_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_5_23_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_10_20_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_13_6_output.tab 
+perl ../cornas_loadnrun_sc3.pl 99 1.5 ../male_cov1.tab ../female_cov1.tab ../comparisons_allgenes/compare_all_9_10_output.tab 
+
+# collect results:
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.25._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.8._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.26._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.1._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.25._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.8._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.17._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.2._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.20._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.9._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.19._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.16._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.5._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.16._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.9._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.3._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.4._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.20._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.20._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.7._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.19._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.11._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.10._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.5._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.20._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.13._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.1._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.7._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.28._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.5._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.23._A-M.8.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.22._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.19._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.19._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.22._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.26._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.17._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.17._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.1._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.27._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.13._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.12._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.12._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.14._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.7._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.8._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.23._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.28._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.6._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.9._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.20._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.14._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.19._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.28._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.15._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.16._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.24._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.18._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.28._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.10._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.24._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.27._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.19._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.20._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.27._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.1._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.6._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.29._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.8._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.18._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.11._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.7._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.28._A-M.18.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.8._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.25._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.14._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.25._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.27._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.25._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.23._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.6._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.4._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.18._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.17._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.25._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.23._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.13._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.14._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.1._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.17._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.1._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.13._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.27._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.18._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.1._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.7._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.5._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.10._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.13._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../Y19set.list cornas_all_B-F.9._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.25._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.8._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.26._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.1._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.25._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.8._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.17._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.2._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.20._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.9._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.19._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.16._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.5._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.16._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.9._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.3._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.4._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.20._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.20._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.7._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.19._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.11._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.10._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.5._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.20._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.13._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.1._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.7._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.28._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.5._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.23._A-M.8.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.22._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.19._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.19._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.22._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.26._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.17._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.17._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.1._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.27._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.13._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.12._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.12._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.14._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.7._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.8._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.23._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.28._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.6._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.9._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.20._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.14._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.19._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.28._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.15._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.16._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.24._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.18._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.28._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.10._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.24._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.27._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.19._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.20._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.27._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.1._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.6._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.29._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.8._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.18._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.11._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.7._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.28._A-M.18.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.8._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.25._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.14._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.25._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.27._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.25._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.23._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.6._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.4._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.18._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.17._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.25._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.23._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.13._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.14._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.1._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.17._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.1._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.13._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.27._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.18._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.1._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.7._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.5._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.10._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.13._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list cornas_all_B-F.9._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.25._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.8._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.26._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.1._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.25._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.8._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.17._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.2._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.20._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.9._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.19._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.16._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.5._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.16._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.9._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.3._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.4._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.20._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.20._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.7._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.19._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.11._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.10._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.5._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.20._A-M.25.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.13._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.1._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.7._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.28._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.5._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.23._A-M.8.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.22._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.19._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.19._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.22._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.26._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.17._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.17._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.1._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.27._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.13._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.12._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.12._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.14._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.7._A-M.17.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.8._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.23._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.28._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.6._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.9._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.20._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.14._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.19._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.28._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.15._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.16._A-M.13.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.24._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.18._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.28._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.10._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.24._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.27._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.19._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.20._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.27._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.1._A-M.12.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.6._A-M.24.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.29._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.8._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.18._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.11._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.7._A-M.15.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.28._A-M.18.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.8._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.25._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.14._A-M.2.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.25._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.27._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.25._A-M.22.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.23._A-M.11.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.6._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.4._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.18._A-M.3.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.17._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.25._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.23._A-M.7.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.13._A-M.4.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.14._A-M.21.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.1._A-M.14.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.17._A-M.19.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.1._A-M.9.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.13._A-M.16.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.27._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.18._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.1._A-M.1.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.7._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.5._A-M.23.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.10._A-M.20.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.13._A-M.6.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+perl ../grep_fromlist.pl ../hk11set.list cornas_all_B-F.9._A-M.10.out |awk '{if($2 =="Y"){print $2}}' |wc -l
+
+cd ..
+
+
+# NOISeq run:
+mkdir NOISeq_run
+cd NOISeq_run
+
+#start runs:
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_25_6_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_8_10_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_26_15_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_1_15_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_25_15_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_8_25_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_17_3_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_2_1_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_20_24_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_9_11_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_19_6_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_16_9_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_5_22_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_16_10_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_9_9_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_3_20_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_4_2_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_20_10_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_20_14_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_7_12_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_19_17_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_11_25_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_10_17_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_5_16_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_20_25_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_13_21_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_1_13_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_7_14_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_28_12_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_5_14_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_23_8_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_22_13_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_19_7_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_19_21_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_22_22_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_26_24_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_17_10_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_17_14_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_1_3_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_27_13_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_13_7_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_12_19_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_12_24_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_14_3_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_7_17_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_8_22_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_23_2_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_28_4_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_6_11_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_9_3_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_20_9_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_14_22_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_19_24_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_28_20_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_15_15_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_16_13_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_24_21_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_18_10_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_28_14_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_10_9_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_24_6_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_27_11_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_19_19_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_20_3_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_27_7_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_1_12_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_6_24_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_29_6_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_8_15_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_18_4_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_11_16_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_7_15_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_28_18_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_8_6_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_25_20_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_14_2_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_25_19_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_27_20_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_25_22_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_23_11_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_6_21_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_4_21_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_18_3_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_17_23_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_25_23_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_23_7_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_13_4_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_14_21_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_1_14_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_17_19_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_1_9_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_13_16_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_27_10_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_18_1_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_1_1_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_7_23_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_5_23_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_10_20_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_13_6_output.tab
+Rscript ../noiseq_loadnrun_sc3.R ../human_genes_lengths.txt ../comparisons_allgenes/compare_all_9_10_output.tab
+
+# collect results:
+perl ../grep_fromlist.pl Y19set.list compare_all_25_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_8_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_26_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_1_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_25_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_8_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_17_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_2_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_20_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_9_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_19_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_16_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_5_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_16_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_9_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_3_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_4_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_20_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_20_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_7_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_19_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_11_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_10_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_5_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_20_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_13_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_1_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_7_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_28_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_5_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_23_8_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_22_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_19_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_19_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_22_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_26_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_17_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_17_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_1_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_27_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_13_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_12_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_12_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_14_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_7_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_8_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_23_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_28_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_6_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_9_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_20_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_14_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_19_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_28_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_15_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_16_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_24_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_18_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_28_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_10_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_24_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_27_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_19_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_20_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_27_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_1_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_6_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_29_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_8_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_18_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_11_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_7_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_28_18_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_8_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_25_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_14_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_25_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_27_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_25_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_23_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_6_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_4_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_18_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_17_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_25_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_23_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_13_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_14_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_1_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_17_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_1_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_13_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_27_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_18_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_1_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_7_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_5_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_10_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_13_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl Y19set.list compare_all_9_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+
+perl ../grep_fromlist.pl XiE61set.list compare_all_25_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_8_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_26_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_1_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_25_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_8_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_17_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_2_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_20_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_9_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_19_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_16_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_5_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_16_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_9_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_3_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_4_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_20_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_20_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_7_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_19_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_11_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_10_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_5_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_20_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_13_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_1_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_7_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_28_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_5_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_23_8_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_22_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_19_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_19_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_22_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_26_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_17_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_17_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_1_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_27_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_13_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_12_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_12_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_14_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_7_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_8_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_23_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_28_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_6_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_9_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_20_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_14_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_19_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_28_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_15_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_16_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_24_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_18_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_28_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_10_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_24_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_27_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_19_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_20_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_27_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_1_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_6_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_29_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_8_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_18_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_11_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_7_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_28_18_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_8_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_25_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_14_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_25_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_27_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_25_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_23_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_6_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_4_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_18_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_17_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_25_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_23_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_13_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_14_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_1_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_17_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_1_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_13_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_27_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_18_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_1_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_7_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_5_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_10_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_13_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl XiE61set.list compare_all_9_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+
+perl ../grep_fromlist.pl hk11set.list compare_all_25_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_8_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_26_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_1_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_25_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_8_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_17_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_2_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_20_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_9_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_19_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_16_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_5_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_16_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_9_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_3_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_4_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_20_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_20_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_7_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_19_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_11_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_10_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_5_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_20_25_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_13_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_1_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_7_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_28_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_5_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_23_8_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_22_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_19_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_19_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_22_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_26_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_17_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_17_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_1_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_27_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_13_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_12_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_12_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_14_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_7_17_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_8_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_23_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_28_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_6_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_9_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_20_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_14_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_19_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_28_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_15_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_16_13_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_24_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_18_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_28_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_10_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_24_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_27_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_19_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_20_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_27_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_1_12_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_6_24_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_29_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_8_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_18_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_11_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_7_15_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_28_18_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_8_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_25_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_14_2_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_25_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_27_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_25_22_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_23_11_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_6_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_4_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_18_3_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_17_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_25_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_23_7_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_13_4_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_14_21_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_1_14_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_17_19_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_1_9_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_13_16_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_27_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_18_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_1_1_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_7_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_5_23_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_10_20_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_13_6_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+perl ../grep_fromlist.pl hk11set.list compare_all_9_10_output.tab_noiseq-sim.rpkm.tab | awk '{if ($6 >= 0.85 && $6!="NA") print $0}' |wc -l
+
+cd ..
+
+
+# GFOLD run:
+mkdir GFOLD_run
+cd GFOLD_run
+
+# create the individual sample input:
+mkdir indv_samples
+cd indv_samples
+perl ../../prep_gfold_input.pl ../../comparisons_allgenes ../../human_genes_lengths.txt
+cd ..
+
+# start runs:
+mkdir pairAB_gfold_results_1
+gfold diff -s1 indv_samples/sample_F25 -s2 indv_samples/sample_M6 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_25_6.run1.diff
+gfold diff -s1 indv_samples/sample_F8 -s2 indv_samples/sample_M10 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_8_10.run1.diff
+gfold diff -s1 indv_samples/sample_F26 -s2 indv_samples/sample_M15 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_26_15.run1.diff
+gfold diff -s1 indv_samples/sample_F1 -s2 indv_samples/sample_M15 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_1_15.run1.diff
+gfold diff -s1 indv_samples/sample_F25 -s2 indv_samples/sample_M15 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_25_15.run1.diff
+gfold diff -s1 indv_samples/sample_F8 -s2 indv_samples/sample_M25 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_8_25.run1.diff
+gfold diff -s1 indv_samples/sample_F17 -s2 indv_samples/sample_M3 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_17_3.run1.diff
+gfold diff -s1 indv_samples/sample_F2 -s2 indv_samples/sample_M1 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_2_1.run1.diff
+gfold diff -s1 indv_samples/sample_F20 -s2 indv_samples/sample_M24 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_20_24.run1.diff
+gfold diff -s1 indv_samples/sample_F9 -s2 indv_samples/sample_M11 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_9_11.run1.diff
+gfold diff -s1 indv_samples/sample_F19 -s2 indv_samples/sample_M6 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_19_6.run1.diff
+gfold diff -s1 indv_samples/sample_F16 -s2 indv_samples/sample_M9 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_16_9.run1.diff
+gfold diff -s1 indv_samples/sample_F5 -s2 indv_samples/sample_M22 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_5_22.run1.diff
+gfold diff -s1 indv_samples/sample_F16 -s2 indv_samples/sample_M10 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_16_10.run1.diff
+gfold diff -s1 indv_samples/sample_F9 -s2 indv_samples/sample_M9 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_9_9.run1.diff
+gfold diff -s1 indv_samples/sample_F3 -s2 indv_samples/sample_M20 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_3_20.run1.diff
+gfold diff -s1 indv_samples/sample_F4 -s2 indv_samples/sample_M2 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_4_2.run1.diff
+gfold diff -s1 indv_samples/sample_F20 -s2 indv_samples/sample_M10 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_20_10.run1.diff
+gfold diff -s1 indv_samples/sample_F20 -s2 indv_samples/sample_M14 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_20_14.run1.diff
+gfold diff -s1 indv_samples/sample_F7 -s2 indv_samples/sample_M12 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_7_12.run1.diff
+gfold diff -s1 indv_samples/sample_F19 -s2 indv_samples/sample_M17 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_19_17.run1.diff
+gfold diff -s1 indv_samples/sample_F11 -s2 indv_samples/sample_M25 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_11_25.run1.diff
+gfold diff -s1 indv_samples/sample_F10 -s2 indv_samples/sample_M17 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_10_17.run1.diff
+gfold diff -s1 indv_samples/sample_F5 -s2 indv_samples/sample_M16 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_5_16.run1.diff
+gfold diff -s1 indv_samples/sample_F20 -s2 indv_samples/sample_M25 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_20_25.run1.diff
+gfold diff -s1 indv_samples/sample_F13 -s2 indv_samples/sample_M21 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_13_21.run1.diff
+gfold diff -s1 indv_samples/sample_F1 -s2 indv_samples/sample_M13 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_1_13.run1.diff
+gfold diff -s1 indv_samples/sample_F7 -s2 indv_samples/sample_M14 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_7_14.run1.diff
+gfold diff -s1 indv_samples/sample_F28 -s2 indv_samples/sample_M12 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_28_12.run1.diff
+gfold diff -s1 indv_samples/sample_F5 -s2 indv_samples/sample_M14 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_5_14.run1.diff
+gfold diff -s1 indv_samples/sample_F23 -s2 indv_samples/sample_M8 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_23_8.run1.diff
+gfold diff -s1 indv_samples/sample_F22 -s2 indv_samples/sample_M13 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_22_13.run1.diff
+gfold diff -s1 indv_samples/sample_F19 -s2 indv_samples/sample_M7 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_19_7.run1.diff
+gfold diff -s1 indv_samples/sample_F19 -s2 indv_samples/sample_M21 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_19_21.run1.diff
+gfold diff -s1 indv_samples/sample_F22 -s2 indv_samples/sample_M22 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_22_22.run1.diff
+gfold diff -s1 indv_samples/sample_F26 -s2 indv_samples/sample_M24 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_26_24.run1.diff
+gfold diff -s1 indv_samples/sample_F17 -s2 indv_samples/sample_M10 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_17_10.run1.diff
+gfold diff -s1 indv_samples/sample_F17 -s2 indv_samples/sample_M14 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_17_14.run1.diff
+gfold diff -s1 indv_samples/sample_F1 -s2 indv_samples/sample_M3 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_1_3.run1.diff
+gfold diff -s1 indv_samples/sample_F27 -s2 indv_samples/sample_M13 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_27_13.run1.diff
+gfold diff -s1 indv_samples/sample_F13 -s2 indv_samples/sample_M7 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_13_7.run1.diff
+gfold diff -s1 indv_samples/sample_F12 -s2 indv_samples/sample_M19 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_12_19.run1.diff
+gfold diff -s1 indv_samples/sample_F12 -s2 indv_samples/sample_M24 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_12_24.run1.diff
+gfold diff -s1 indv_samples/sample_F14 -s2 indv_samples/sample_M3 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_14_3.run1.diff
+gfold diff -s1 indv_samples/sample_F7 -s2 indv_samples/sample_M17 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_7_17.run1.diff
+gfold diff -s1 indv_samples/sample_F8 -s2 indv_samples/sample_M22 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_8_22.run1.diff
+gfold diff -s1 indv_samples/sample_F23 -s2 indv_samples/sample_M2 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_23_2.run1.diff
+gfold diff -s1 indv_samples/sample_F28 -s2 indv_samples/sample_M4 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_28_4.run1.diff
+gfold diff -s1 indv_samples/sample_F6 -s2 indv_samples/sample_M11 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_6_11.run1.diff
+gfold diff -s1 indv_samples/sample_F9 -s2 indv_samples/sample_M3 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_9_3.run1.diff
+gfold diff -s1 indv_samples/sample_F20 -s2 indv_samples/sample_M9 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_20_9.run1.diff
+gfold diff -s1 indv_samples/sample_F14 -s2 indv_samples/sample_M22 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_14_22.run1.diff
+gfold diff -s1 indv_samples/sample_F19 -s2 indv_samples/sample_M24 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_19_24.run1.diff
+gfold diff -s1 indv_samples/sample_F28 -s2 indv_samples/sample_M20 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_28_20.run1.diff
+gfold diff -s1 indv_samples/sample_F15 -s2 indv_samples/sample_M15 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_15_15.run1.diff
+gfold diff -s1 indv_samples/sample_F16 -s2 indv_samples/sample_M13 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_16_13.run1.diff
+gfold diff -s1 indv_samples/sample_F24 -s2 indv_samples/sample_M21 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_24_21.run1.diff
+gfold diff -s1 indv_samples/sample_F18 -s2 indv_samples/sample_M10 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_18_10.run1.diff
+gfold diff -s1 indv_samples/sample_F28 -s2 indv_samples/sample_M14 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_28_14.run1.diff
+gfold diff -s1 indv_samples/sample_F10 -s2 indv_samples/sample_M9 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_10_9.run1.diff
+gfold diff -s1 indv_samples/sample_F24 -s2 indv_samples/sample_M6 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_24_6.run1.diff
+gfold diff -s1 indv_samples/sample_F27 -s2 indv_samples/sample_M11 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_27_11.run1.diff
+gfold diff -s1 indv_samples/sample_F19 -s2 indv_samples/sample_M19 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_19_19.run1.diff
+gfold diff -s1 indv_samples/sample_F20 -s2 indv_samples/sample_M3 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_20_3.run1.diff
+gfold diff -s1 indv_samples/sample_F27 -s2 indv_samples/sample_M7 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_27_7.run1.diff
+gfold diff -s1 indv_samples/sample_F1 -s2 indv_samples/sample_M12 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_1_12.run1.diff
+gfold diff -s1 indv_samples/sample_F6 -s2 indv_samples/sample_M24 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_6_24.run1.diff
+gfold diff -s1 indv_samples/sample_F29 -s2 indv_samples/sample_M6 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_29_6.run1.diff
+gfold diff -s1 indv_samples/sample_F8 -s2 indv_samples/sample_M15 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_8_15.run1.diff
+gfold diff -s1 indv_samples/sample_F18 -s2 indv_samples/sample_M4 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_18_4.run1.diff
+gfold diff -s1 indv_samples/sample_F11 -s2 indv_samples/sample_M16 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_11_16.run1.diff
+gfold diff -s1 indv_samples/sample_F7 -s2 indv_samples/sample_M15 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_7_15.run1.diff
+gfold diff -s1 indv_samples/sample_F28 -s2 indv_samples/sample_M18 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_28_18.run1.diff
+gfold diff -s1 indv_samples/sample_F8 -s2 indv_samples/sample_M6 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_8_6.run1.diff
+gfold diff -s1 indv_samples/sample_F25 -s2 indv_samples/sample_M20 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_25_20.run1.diff
+gfold diff -s1 indv_samples/sample_F14 -s2 indv_samples/sample_M2 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_14_2.run1.diff
+gfold diff -s1 indv_samples/sample_F25 -s2 indv_samples/sample_M19 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_25_19.run1.diff
+gfold diff -s1 indv_samples/sample_F27 -s2 indv_samples/sample_M20 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_27_20.run1.diff
+gfold diff -s1 indv_samples/sample_F25 -s2 indv_samples/sample_M22 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_25_22.run1.diff
+gfold diff -s1 indv_samples/sample_F23 -s2 indv_samples/sample_M11 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_23_11.run1.diff
+gfold diff -s1 indv_samples/sample_F6 -s2 indv_samples/sample_M21 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_6_21.run1.diff
+gfold diff -s1 indv_samples/sample_F4 -s2 indv_samples/sample_M21 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_4_21.run1.diff
+gfold diff -s1 indv_samples/sample_F18 -s2 indv_samples/sample_M3 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_18_3.run1.diff
+gfold diff -s1 indv_samples/sample_F17 -s2 indv_samples/sample_M23 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_17_23.run1.diff
+gfold diff -s1 indv_samples/sample_F25 -s2 indv_samples/sample_M23 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_25_23.run1.diff
+gfold diff -s1 indv_samples/sample_F23 -s2 indv_samples/sample_M7 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_23_7.run1.diff
+gfold diff -s1 indv_samples/sample_F13 -s2 indv_samples/sample_M4 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_13_4.run1.diff
+gfold diff -s1 indv_samples/sample_F14 -s2 indv_samples/sample_M21 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_14_21.run1.diff
+gfold diff -s1 indv_samples/sample_F1 -s2 indv_samples/sample_M14 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_1_14.run1.diff
+gfold diff -s1 indv_samples/sample_F17 -s2 indv_samples/sample_M19 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_17_19.run1.diff
+gfold diff -s1 indv_samples/sample_F1 -s2 indv_samples/sample_M9 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_1_9.run1.diff
+gfold diff -s1 indv_samples/sample_F13 -s2 indv_samples/sample_M16 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_13_16.run1.diff
+gfold diff -s1 indv_samples/sample_F27 -s2 indv_samples/sample_M10 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_27_10.run1.diff
+gfold diff -s1 indv_samples/sample_F18 -s2 indv_samples/sample_M1 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_18_1.run1.diff
+gfold diff -s1 indv_samples/sample_F1 -s2 indv_samples/sample_M1 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_1_1.run1.diff
+gfold diff -s1 indv_samples/sample_F7 -s2 indv_samples/sample_M23 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_7_23.run1.diff
+gfold diff -s1 indv_samples/sample_F5 -s2 indv_samples/sample_M23 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_5_23.run1.diff
+gfold diff -s1 indv_samples/sample_F10 -s2 indv_samples/sample_M20 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_10_20.run1.diff
+gfold diff -s1 indv_samples/sample_F13 -s2 indv_samples/sample_M6 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_13_6.run1.diff
+gfold diff -s1 indv_samples/sample_F9 -s2 indv_samples/sample_M10 -suf .read_cnt -o pairAB_gfold_results_1/gfold_all_sample_9_10.run1.diff
+
+# collect results:
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_25_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_8_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_26_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_1_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_25_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_8_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_17_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_2_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_20_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_9_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_19_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_16_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_5_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_16_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_9_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_3_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_4_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_20_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_20_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_7_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_19_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_11_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_10_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_5_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_20_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_13_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_1_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_7_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_28_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_5_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_23_8.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_22_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_19_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_19_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_22_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_26_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_17_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_17_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_1_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_27_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_13_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_12_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_12_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_14_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_7_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_8_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_23_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_28_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_6_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_9_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_20_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_14_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_19_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_28_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_15_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_16_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_24_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_18_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_28_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_10_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_24_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_27_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_19_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_20_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_27_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_1_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_6_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_29_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_8_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_18_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_11_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_7_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_28_18.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_8_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_25_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_14_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_25_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_27_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_25_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_23_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_6_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_4_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_18_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_17_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_25_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_23_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_13_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_14_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_1_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_17_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_1_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_13_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_27_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_18_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_1_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_7_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_5_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_10_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_13_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../Y19set.list pairAB_gfold_results_1/gfold_all_sample_9_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_25_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_8_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_26_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_1_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_25_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_8_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_17_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_2_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_20_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_9_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_19_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_16_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_5_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_16_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_9_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_3_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_4_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_20_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_20_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_7_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_19_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_11_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_10_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_5_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_20_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_13_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_1_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_7_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_28_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_5_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_23_8.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_22_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_19_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_19_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_22_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_26_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_17_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_17_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_1_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_27_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_13_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_12_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_12_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_14_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_7_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_8_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_23_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_28_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_6_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_9_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_20_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_14_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_19_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_28_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_15_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_16_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_24_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_18_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_28_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_10_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_24_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_27_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_19_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_20_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_27_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_1_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_6_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_29_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_8_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_18_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_11_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_7_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_28_18.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_8_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_25_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_14_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_25_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_27_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_25_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_23_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_6_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_4_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_18_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_17_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_25_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_23_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_13_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_14_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_1_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_17_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_1_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_13_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_27_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_18_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_1_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_7_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_5_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_10_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_13_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../XiE61set.list pairAB_gfold_results_1/gfold_all_sample_9_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_25_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_8_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_26_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_1_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_25_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_8_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_17_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_2_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_20_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_9_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_19_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_16_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_5_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_16_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_9_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_3_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_4_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_20_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_20_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_7_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_19_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_11_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_10_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_5_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_20_25.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_13_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_1_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_7_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_28_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_5_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_23_8.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_22_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_19_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_19_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_22_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_26_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_17_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_17_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_1_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_27_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_13_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_12_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_12_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_14_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_7_17.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_8_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_23_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_28_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_6_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_9_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_20_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_14_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_19_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_28_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_15_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_16_13.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_24_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_18_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_28_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_10_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_24_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_27_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_19_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_20_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_27_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_1_12.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_6_24.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_29_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_8_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_18_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_11_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_7_15.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_28_18.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_8_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_25_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_14_2.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_25_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_27_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_25_22.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_23_11.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_6_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_4_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_18_3.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_17_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_25_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_23_7.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_13_4.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_14_21.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_1_14.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_17_19.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_1_9.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_13_16.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_27_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_18_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_1_1.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_7_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_5_23.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_10_20.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_13_6.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+perl ../grep_fromlist.pl ../hk11set.list pairAB_gfold_results_1/gfold_all_sample_9_10.run1.diff |awk '{if($3 <=-0.9 || $3 >=0.9 ){print $3}}'  |wc -l
+
+cd ..
+
+
+# the results are compiled in ppvsen_X-Y.tab and XY_study.xlsx
+
