@@ -1,0 +1,347 @@
+# scripts to have:
+#	custom_sampling_sc1.R
+#	output_pairs.R
+#	noiseq_loadnrun_sc1.R
+#	cornas.R
+
+# files to have:
+#	Oc_genpois_table.0.01.Tc.1.to.10000.test.eval (from CORNAS_sim/results/PTO_tables)
+#	Oc_genpois_table.0.1.Tc.1.to.10000.test.eval (from CORNAS_sim/results/PTO_tables)
+#	Oc_genpois_table.0.25.Tc.1.to.10000.test.eval (from CORNAS_sim/results/PTO_tables)
+# 	Oc_genpois_table.0.5.Tc.1.to.10000.test.eval (from CORNAS_sim/results/PTO_tables)
+#	pseudolen.tab
+
+# ensure NOISeq and GFOLD are installed, with the latter executable from the environment.
+
+
+# create 100 sample data per coverage for true counts 1-10000 from our P(O|T) table:
+Rscript custom_sampling_sc1.R Oc_genpois_table.0.01.Tc.1.to.10000.test.eval 1 1 10000 100 >cov0.01_Tc0-10k_100reps.out
+
+Rscript custom_sampling_sc1.R Oc_genpois_table.0.1.Tc.1.to.10000.test.eval 1 1 10000 100 >cov0.1_Tc0-10k_100reps.out
+
+Rscript custom_sampling_sc1.R Oc_genpois_table.0.25.Tc.1.to.10000.test.eval 1 1 10000 100 >cov0.25_Tc0-10k_100reps.out
+
+Rscript custom_sampling_sc1.R Oc_genpois_table.0.5.Tc.1.to.10000.test.eval 1 1 10000 100 >cov0.5_Tc0-10k_100reps.out
+
+
+
+# generate comparisons:
+# no fold:
+mkdir samppairs_cov0.01/nodiff
+mkdir samppairs_cov0.1/nodiff
+mkdir samppairs_cov0.25/nodiff
+mkdir samppairs_cov0.5/nodiff
+
+Rscript output_pairs.R cov0.01_Tc0-10k_100reps.out 1 samppairs_cov0.01/nodiff/cov0.01_nofolddiff.pair 100
+Rscript output_pairs.R cov0.1_Tc0-10k_100reps.out 1 samppairs_cov0.1/nodiff/cov0.1_nofolddiff.pair 100
+Rscript output_pairs.R cov0.25_Tc0-10k_100reps.out 1 samppairs_cov0.25/nodiff/cov0.25_nofolddiff.pair 100
+Rscript output_pairs.R cov0.5_Tc0-10k_100reps.out 1 samppairs_cov0.5/nodiff/cov0.5_nofolddiff.pair 100
+
+
+# 1.5 fold:
+mkdir samppairs_cov0.01/fold1.5
+mkdir samppairs_cov0.1/fold1.5
+mkdir samppairs_cov0.25/fold1.5
+mkdir samppairs_cov0.5/fold1.5
+
+Rscript output_pairs.R cov0.01_Tc0-10k_100reps.out 1.5 samppairs_cov0.01/fold1.5/cov0.01_1.5fold.pair 100
+Rscript output_pairs.R cov0.1_Tc0-10k_100reps.out 1.5 samppairs_cov0.1/fold1.5/cov0.1_1.5fold.pair 100
+Rscript output_pairs.R cov0.25_Tc0-10k_100reps.out 1.5 samppairs_cov0.25/fold1.5/cov0.25_1.5fold.pair 100
+Rscript output_pairs.R cov0.5_Tc0-10k_100reps.out 1.5 samppairs_cov0.5/fold1.5/cov0.5_1.5fold.pair 100
+
+# 2 fold:
+mkdir samppairs_cov0.01/fold2
+mkdir samppairs_cov0.1/fold2
+mkdir samppairs_cov0.25/fold2
+mkdir samppairs_cov0.5/fold2
+
+Rscript output_pairs.R cov0.01_Tc0-10k_100reps.out 2 samppairs_cov0.01/fold2/cov0.01_2fold.pair 100
+Rscript output_pairs.R cov0.1_Tc0-10k_100reps.out 2 samppairs_cov0.1/fold2/cov0.1_2fold.pair 100
+Rscript output_pairs.R cov0.25_Tc0-10k_100reps.out 2 samppairs_cov0.25/fold2/cov0.25_2fold.pair 100
+Rscript output_pairs.R cov0.5_Tc0-10k_100reps.out 2 samppairs_cov0.5/fold2/cov0.5_2fold.pair 100
+
+
+# combine different fold comparisons according to coverages:
+mkdir samppairs_cov0.01/combined
+mkdir samppairs_cov0.1/combined
+mkdir samppairs_cov0.25/combined
+mkdir samppairs_cov0.5/combined
+
+for i in {1..100}
+do
+tail -9999 samppairs_cov0.01/fold1.5/*.$i >temp1.5.$i
+cat samppairs_cov0.01/nodiff/*.$i temp1.5.$i samppairs_cov0.01/fold2/*.$i |awk '{if ($3 != ""){print $1,"_",$3,"\t",$2,"\t",$4}}' |sed "s/ //g" >samppairs_cov0.01/combined/cov0.01_sim_all.pair.$i
+
+tail -9999 samppairs_cov0.1/fold1.5/*.$i >temp1.5.$i
+cat samppairs_cov0.1/nodiff/*.$i temp1.5.$i samppairs_cov0.1/fold2/*.$i |awk '{if ($3 != ""){print $1,"_",$3,"\t",$2,"\t",$4}}' |sed "s/ //g" >samppairs_cov0.1/combined/cov0.1_sim_all.pair.$i
+
+tail -9999 samppairs_cov0.25/fold1.5/*.$i >temp1.5.$i
+cat samppairs_cov0.25/nodiff/*.$i temp1.5.$i samppairs_cov0.25/fold2/*.$i |awk '{if ($3 != ""){print $1,"_",$3,"\t",$2,"\t",$4}}' |sed "s/ //g" >samppairs_cov0.25/combined/cov0.25_sim_all.pair.$i
+
+tail -9999 samppairs_cov0.5/fold1.5/*.$i >temp1.5.$i
+cat samppairs_cov0.5/nodiff/*.$i temp1.5.$i samppairs_cov0.5/fold2/*.$i |awk '{if ($3 != ""){print $1,"_",$3,"\t",$2,"\t",$4}}' |sed "s/ //g" >samppairs_cov0.5/combined/cov0.5_sim_all.pair.$i
+done
+rm temp1.5.*
+
+
+
+# CORNAS default run:
+mkdir CORNAS_default_run
+cd CORNAS_default_run
+echo -e "Gene Name: 1\nSample A column: 2\nSample B column: 3\nSample A Coverage: 0.01\nSample B Coverage: 0.01\n" >cornas_1.5f.001.config
+echo -e "Gene Name: 1\nSample A column: 2\nSample B column: 3\nSample A Coverage: 0.1\nSample B Coverage: 0.1\n" >cornas_1.5f.01.config
+echo -e "Gene Name: 1\nSample A column: 2\nSample B column: 3\nSample A Coverage: 0.25\nSample B Coverage: 0.25\n" >cornas_1.5f.025.config
+echo -e "Gene Name: 1\nSample A column: 2\nSample B column: 3\nSample A Coverage: 0.5\nSample B Coverage: 0.5\n" >cornas_1.5f.05.config
+
+mkdir cov0.01_results_1.5f
+mkdir cov0.1_results_1.5f
+mkdir cov0.25_results_1.5f
+mkdir cov0.5_results_1.5f
+
+for i in {1..100}
+do
+Rscript ../cornas.R cornas_1.5f.001.config ../samppairs_cov0.01/combined/cov0.01_sim_all.pair.$i >cov0.01_results_1.5f/cov0.01_sim_all.pair.cornas.out.$i  
+Rscript ../cornas.R cornas_1.5f.01.config ../samppairs_cov0.1/combined/cov0.1_sim_all.pair.$i >cov0.1_results_1.5f/cov0.1_sim_all.pair.cornas.out.$i  
+Rscript ../cornas.R cornas_1.5f.025.config ../samppairs_cov0.25/combined/cov0.25_sim_all.pair.$i >cov0.25_results_1.5f/cov0.25_sim_all.pair.cornas.out.$i  
+Rscript ../cornas.R cornas_1.5f.05.config ../samppairs_cov0.5/combined/cov0.5_sim_all.pair.$i >cov0.5_results_1.5f/cov0.5_sim_all.pair.cornas.out.$i  
+done
+
+# summarize CORNAS default run results for analysis:
+# table column names are "Coverage","Replicate","Tc1","Tc2","DEG"
+for i in {1..100}
+do
+head -10012 cov0.01_results_1.5f/cov0.01_sim_all.pair.cornas.out.$i |tail -10000 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.01",'$i',$1,$2,"0"}else {print "0.01",'$i',$1,$2,"1"}}' >> cornas_f_1.5_nofold_sim_all.Tc.count
+
+tail -11667 cov0.01_results_1.5f/cov0.01_sim_all.pair.cornas.out.$i |head -6666 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.01",'$i',$1,$2,"0"}else {print "0.01",'$i',$1,$2,"1"}}' >> cornas_f_1.5_fold1.5_sim_all.Tc.count
+
+tail -5001 cov0.01_results_1.5f/cov0.01_sim_all.pair.cornas.out.$i |head -5000 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($3 =="N"){print "0.01",'$i',$1,$2,"0"}else {print "0.01",'$i',$1,$2,"1"}}' >> cornas_f_1.5_fold2_sim_all.Tc.count
+
+
+head -10012 cov0.1_results_1.5f/cov0.1_sim_all.pair.cornas.out.$i |tail -10000 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.1",'$i',$1,$2,"0"}else {print "0.1",'$i',$1,$2,"1"}}' >> cornas_f_1.5_nofold_sim_all.Tc.count
+
+tail -11667 cov0.1_results_1.5f/cov0.1_sim_all.pair.cornas.out.$i |head -6666 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.1",'$i',$1,$2,"0"}else {print "0.1",'$i',$1,$2,"1"}}' >> cornas_f_1.5_fold1.5_sim_all.Tc.count
+
+tail -5001 cov0.1_results_1.5f/cov0.1_sim_all.pair.cornas.out.$i |head -5000 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($3 =="N"){print "0.1",'$i',$1,$2,"0"}else {print "0.1",'$i',$1,$2,"1"}}' >> cornas_f_1.5_fold2_sim_all.Tc.count
+
+
+head -10012 cov0.25_results_1.5f/cov0.25_sim_all.pair.cornas.out.$i |tail -10000 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.25",'$i',$1,$2,"0"}else {print "0.25",'$i',$1,$2,"1"}}' >> cornas_f_1.5_nofold_sim_all.Tc.count
+
+tail -11667 cov0.25_results_1.5f/cov0.25_sim_all.pair.cornas.out.$i |head -6666 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.25",'$i',$1,$2,"0"}else {print "0.25",'$i',$1,$2,"1"}}' >> cornas_f_1.5_fold1.5_sim_all.Tc.count
+
+tail -5001 cov0.25_results_1.5f/cov0.25_sim_all.pair.cornas.out.$i |head -5000 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($3 =="N"){print "0.25",'$i',$1,$2,"0"}else {print "0.25",'$i',$1,$2,"1"}}' >> cornas_f_1.5_fold2_sim_all.Tc.count
+
+
+head -10012 cov0.5_results_1.5f/cov0.5_sim_all.pair.cornas.out.$i |tail -10000 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.5",'$i',$1,$2,"0"}else {print "0.5",'$i',$1,$2,"1"}}' >> cornas_f_1.5_nofold_sim_all.Tc.count
+
+tail -11667 cov0.5_results_1.5f/cov0.5_sim_all.pair.cornas.out.$i |head -6666 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.5",'$i',$1,$2,"0"}else {print "0.5",'$i',$1,$2,"1"}}' >> cornas_f_1.5_fold1.5_sim_all.Tc.count
+
+tail -5001 cov0.5_results_1.5f/cov0.5_sim_all.pair.cornas.out.$i |head -5000 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($3 =="N"){print "0.5",'$i',$1,$2,"0"}else {print "0.5",'$i',$1,$2,"1"}}' >> cornas_f_1.5_fold2_sim_all.Tc.count
+
+done
+
+cd ..
+
+
+
+# CORNAS set1 run:
+mkdir CORNAS_set1_run
+cd CORNAS_set1_run
+echo -e "Gene Name: 1\nSample A column: 2\nSample B column: 3\nSample A Coverage: 0.01\nSample B Coverage: 0.01\nFold threshold: 1\n" >cornas_1f.001.config
+echo -e "Gene Name: 1\nSample A column: 2\nSample B column: 3\nSample A Coverage: 0.1\nSample B Coverage: 0.1\nFold threshold: 1\n" >cornas_1f.01.config
+echo -e "Gene Name: 1\nSample A column: 2\nSample B column: 3\nSample A Coverage: 0.25\nSample B Coverage: 0.25\nFold threshold: 1\n" >cornas_1f.025.config
+echo -e "Gene Name: 1\nSample A column: 2\nSample B column: 3\nSample A Coverage: 0.5\nSample B Coverage: 0.5\nFold threshold: 1\n" >cornas_1f.05.config
+
+mkdir cov0.01_results_1f
+mkdir cov0.1_results_1f
+mkdir cov0.25_results_1f
+mkdir cov0.5_results_1f
+
+for i in {1..100}
+do
+Rscript ../cornas.R cornas_1f.001.config ../samppairs_cov0.01/combined/cov0.01_sim_all.pair.$i >cov0.01_results_1f/cov0.01_sim_all.pair.cornas.out.$i  
+Rscript ../cornas.R cornas_1f.01.config ../samppairs_cov0.1/combined/cov0.1_sim_all.pair.$i >cov0.1_results_1f/cov0.1_sim_all.pair.cornas.out.$i  
+Rscript ../cornas.R cornas_1f.025.config ../samppairs_cov0.25/combined/cov0.25_sim_all.pair.$i >cov0.25_results_1f/cov0.25_sim_all.pair.cornas.out.$i  
+Rscript ../cornas.R cornas_1f.05.config ../samppairs_cov0.5/combined/cov0.5_sim_all.pair.$i >cov0.5_results_1f/cov0.5_sim_all.pair.cornas.out.$i  
+done
+
+
+# summarize CORNAS set1 run results for analysis:
+# table column names are "Coverage","Replicate","Tc1","Tc2","DEG"
+for i in {1..100}
+do
+head -10012 cov0.01_results_1f/cov0.01_sim_all.pair.cornas.out.$i |tail -10000 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.01",'$i',$1,$2,"0"}else {print "0.01",'$i',$1,$2,"1"}}' >> cornas_f_1_nofold_sim_all.Tc.count
+
+tail -11667 cov0.01_results_1f/cov0.01_sim_all.pair.cornas.out.$i |head -6666 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.01",'$i',$1,$2,"0"}else {print "0.01",'$i',$1,$2,"1"}}' >> cornas_f_1_fold1.5_sim_all.Tc.count
+
+tail -5001 cov0.01_results_1f/cov0.01_sim_all.pair.cornas.out.$i |head -5000 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($3 =="N"){print "0.01",'$i',$1,$2,"0"}else {print "0.01",'$i',$1,$2,"1"}}' >> cornas_f_1_fold2_sim_all.Tc.count
+
+
+head -10012 cov0.1_results_1f/cov0.1_sim_all.pair.cornas.out.$i |tail -10000 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.1",'$i',$1,$2,"0"}else {print "0.1",'$i',$1,$2,"1"}}' >> cornas_f_1_nofold_sim_all.Tc.count
+
+tail -11667 cov0.1_results_1f/cov0.1_sim_all.pair.cornas.out.$i |head -6666 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.1",'$i',$1,$2,"0"}else {print "0.1",'$i',$1,$2,"1"}}' >> cornas_f_1_fold1.5_sim_all.Tc.count
+
+tail -5001 cov0.1_results_1f/cov0.1_sim_all.pair.cornas.out.$i |head -5000 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($3 =="N"){print "0.1",'$i',$1,$2,"0"}else {print "0.1",'$i',$1,$2,"1"}}' >> cornas_f_1_fold2_sim_all.Tc.count
+
+
+head -10012 cov0.25_results_1f/cov0.25_sim_all.pair.cornas.out.$i |tail -10000 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.25",'$i',$1,$2,"0"}else {print "0.25",'$i',$1,$2,"1"}}' >> cornas_f_1_nofold_sim_all.Tc.count
+
+tail -11667 cov0.25_results_1f/cov0.25_sim_all.pair.cornas.out.$i |head -6666 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.25",'$i',$1,$2,"0"}else {print "0.25",'$i',$1,$2,"1"}}' >> cornas_f_1_fold1.5_sim_all.Tc.count
+
+tail -5001 cov0.25_results_1f/cov0.25_sim_all.pair.cornas.out.$i |head -5000 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($3 =="N"){print "0.25",'$i',$1,$2,"0"}else {print "0.25",'$i',$1,$2,"1"}}' >> cornas_f_1_fold2_sim_all.Tc.count
+
+
+head -10012 cov0.5_results_1f/cov0.5_sim_all.pair.cornas.out.$i |tail -10000 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.5",'$i',$1,$2,"0"}else {print "0.5",'$i',$1,$2,"1"}}' >> cornas_f_1_nofold_sim_all.Tc.count
+
+tail -11667 cov0.5_results_1f/cov0.5_sim_all.pair.cornas.out.$i |head -6666 |sed "s/_/ /g" |awk '{if($3 =="N"){print "0.5",'$i',$1,$2,"0"}else {print "0.5",'$i',$1,$2,"1"}}' >> cornas_f_1_fold1.5_sim_all.Tc.count
+
+tail -5001 cov0.5_results_1f/cov0.5_sim_all.pair.cornas.out.$i |head -5000 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($3 =="N"){print "0.5",'$i',$1,$2,"0"}else {print "0.5",'$i',$1,$2,"1"}}' >> cornas_f_1_fold2_sim_all.Tc.count
+
+done
+
+cd ..
+
+
+
+# NOISeq run:
+mkdir NOISeq_run
+cd NOISeq_run
+mkdir cov0.01_results
+mkdir cov0.1_results
+mkdir cov0.25_results
+mkdir cov0.5_results
+
+for i in {1..100}
+do
+Rscript ../noiseq_loadnrun_sc1.R pseudolen.tab ../samppairs_cov0.01/combined/cov0.01_sim_all.pair.$i cov0.01_results/cov0.01_sim_all.pair.$i  
+Rscript ../noiseq_loadnrun_sc1.R pseudolen.tab ../samppairs_cov0.1/combined/cov0.1_sim_all.pair.$i cov0.1_results/cov0.1_sim_all.pair.$i  
+Rscript ../noiseq_loadnrun_sc1.R pseudolen.tab ../samppairs_cov0.25/combined/cov0.25_sim_all.pair.$i cov0.25_results/cov0.25_sim_all.pair.$i  
+Rscript ../noiseq_loadnrun_sc1.R pseudolen.tab ../samppairs_cov0.5/combined/cov0.5_sim_all.pair.$i cov0.5_results/cov0.5_sim_all.pair.$i  
+done
+
+
+# summarize NOISeq run results for analysis:
+# table column names are "Coverage","Replicate","Tc1","Tc2","Prob","DEG"
+for i in {1..100}
+do
+head -10001 cov0.01_results/cov0.01_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |tail -10000 |sed "s/_/ /g" |sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.01",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.01",'$i',$1,$2,$7,"0"}}' >> noiseq_nofold_sim_all.Tc.count
+tail -11666 cov0.01_results/cov0.01_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |head -6666 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.01",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.01",'$i',$1,$2,$7,"0"}}' >> noiseq_fold1.5_sim_all.Tc.count
+tail -5000 cov0.01_results/cov0.01_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.01",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.01",'$i',$1,$2,$7,"0"}}' >> noiseq_fold2_sim_all.Tc.count
+
+head -10001 cov0.1_results/cov0.1_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |tail -10000 |sed "s/_/ /g" |sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.1",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.1",'$i',$1,$2,$7,"0"}}' >> noiseq_nofold_sim_all.Tc.count
+tail -11666 cov0.1_results/cov0.1_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |head -6666 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.1",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.1",'$i',$1,$2,$7,"0"}}' >> noiseq_fold1.5_sim_all.Tc.count
+tail -5000 cov0.1_results/cov0.1_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.1",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.1",'$i',$1,$2,$7,"0"}}' >> noiseq_fold2_sim_all.Tc.count
+
+head -10001 cov0.25_results/cov0.25_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |tail -10000 |sed "s/_/ /g" |sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.25",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.25",'$i',$1,$2,$7,"0"}}' >> noiseq_nofold_sim_all.Tc.count
+tail -11666 cov0.25_results/cov0.25_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |head -6666 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.25",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.25",'$i',$1,$2,$7,"0"}}' >> noiseq_fold1.5_sim_all.Tc.count
+tail -5000 cov0.25_results/cov0.25_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.25",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.25",'$i',$1,$2,$7,"0"}}' >> noiseq_fold2_sim_all.Tc.count
+
+head -10001 cov0.5_results/cov0.5_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |tail -10000 |sed "s/_/ /g" |sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.5",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.5",'$i',$1,$2,$7,"0"}}' >> noiseq_nofold_sim_all.Tc.count
+tail -11666 cov0.5_results/cov0.5_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |head -6666 |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.5",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.5",'$i',$1,$2,$7,"0"}}' >> noiseq_fold1.5_sim_all.Tc.count
+tail -5000 cov0.5_results/cov0.5_sim_all.pair.$i\_noiseq-sim.nonormlen.tab |sed "s/_/ /g"|sed "s/\"//g" |awk '{if($7 >=0.85 && $7!="NA"){print "0.5",'$i',$1,$2,$7,"1"}else if($9 == 1000){print "0.5",'$i',$1,$2,$7,"0"}}' >> noiseq_fold2_sim_all.Tc.count
+
+done
+
+cd ..
+
+
+
+# GFOLD run:
+mkdir GFOLD_run
+cd GFOLD_run
+mkdir cov0.01_results
+mkdir cov0.1_results
+mkdir cov0.25_results
+mkdir cov0.5_results
+
+for i in {1..100}
+do
+	awk '{print $1,"_",$1,"NA",$2,"1000",$2}' ../samppairs_cov0.01/nodiff/cov0.01_nofolddiff.pair.$i >sample_A.read_cnt
+	awk '{print $1,"_",$3,"NA",$2,"1000",$2}' ../samppairs_cov0.01/fold1.5/cov0.01_1.5fold.pair.$i |head -6667 |tail -6666 >>sample_A.read_cnt
+	awk '{print $1,"_",$3,"NA",$2,"1000",$2}' ../samppairs_cov0.01/fold2/cov0.01_2fold.pair.$i |head -5000 >>sample_A.read_cnt
+	sed -i "s/ /\t/g" sample_A.read_cnt
+	sed -i "s/\t_\t/_/g" sample_A.read_cnt
+
+	awk '{print $3,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.01/nodiff/cov0.01_nofolddiff.pair.$i >sample_B.read_cnt
+	awk '{print $1,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.01/fold1.5/cov0.01_1.5fold.pair.$i |head -6667 |tail -6666 >>sample_B.read_cnt
+	awk '{print $1,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.01/fold2/cov0.01_2fold.pair.$i |head -5000 >>sample_B.read_cnt
+	sed -i "s/ /\t/g" sample_B.read_cnt
+	sed -i "s/\t_\t/_/g" sample_B.read_cnt
+
+	gfold diff -s1 sample_A -s2 sample_B -suf .read_cnt -o cov0.01_results/sampleA-sampleB.$i.diff
+	
+	
+	awk '{print $1,"_",$1,"NA",$2,"1000",$2}' ../samppairs_cov0.1/nodiff/cov0.1_nofolddiff.pair.$i >sample_A.read_cnt
+	awk '{print $1,"_",$3,"NA",$2,"1000",$2}' ../samppairs_cov0.1/fold1.5/cov0.1_1.5fold.pair.$i |head -6667 |tail -6666 >>sample_A.read_cnt
+	awk '{print $1,"_",$3,"NA",$2,"1000",$2}' ../samppairs_cov0.1/fold2/cov0.1_2fold.pair.$i |head -5000 >>sample_A.read_cnt
+	sed -i "s/ /\t/g" sample_A.read_cnt
+	sed -i "s/\t_\t/_/g" sample_A.read_cnt
+
+	awk '{print $3,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.1/nodiff/cov0.1_nofolddiff.pair.$i >sample_B.read_cnt
+	awk '{print $1,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.1/fold1.5/cov0.1_1.5fold.pair.$i |head -6667 |tail -6666 >>sample_B.read_cnt
+	awk '{print $1,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.1/fold2/cov0.1_2fold.pair.$i |head -5000 >>sample_B.read_cnt
+	sed -i "s/ /\t/g" sample_B.read_cnt
+	sed -i "s/\t_\t/_/g" sample_B.read_cnt
+
+	gfold diff -s1 sample_A -s2 sample_B -suf .read_cnt -o cov0.1_results/sampleA-sampleB.$i.diff
+	
+
+	awk '{print $1,"_",$1,"NA",$2,"1000",$2}' ../samppairs_cov0.25/nodiff/cov0.25_nofolddiff.pair.$i >sample_A.read_cnt
+	awk '{print $1,"_",$3,"NA",$2,"1000",$2}' ../samppairs_cov0.25/fold1.5/cov0.25_1.5fold.pair.$i |head -6667 |tail -6666 >>sample_A.read_cnt
+	awk '{print $1,"_",$3,"NA",$2,"1000",$2}' ../samppairs_cov0.25/fold2/cov0.25_2fold.pair.$i |head -5000 >>sample_A.read_cnt
+	sed -i "s/ /\t/g" sample_A.read_cnt
+	sed -i "s/\t_\t/_/g" sample_A.read_cnt
+
+	awk '{print $3,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.25/nodiff/cov0.25_nofolddiff.pair.$i >sample_B.read_cnt
+	awk '{print $1,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.25/fold1.5/cov0.25_1.5fold.pair.$i |head -6667 |tail -6666 >>sample_B.read_cnt
+	awk '{print $1,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.25/fold2/cov0.25_2fold.pair.$i |head -5000 >>sample_B.read_cnt
+	sed -i "s/ /\t/g" sample_B.read_cnt
+	sed -i "s/\t_\t/_/g" sample_B.read_cnt
+
+	gfold diff -s1 sample_A -s2 sample_B -suf .read_cnt -o cov0.25_results/sampleA-sampleB.$i.diff
+
+
+	awk '{print $1,"_",$1,"NA",$2,"1000",$2}' ../samppairs_cov0.5/nodiff/cov0.5_nofolddiff.pair.$i >sample_A.read_cnt
+	awk '{print $1,"_",$3,"NA",$2,"1000",$2}' ../samppairs_cov0.5/fold1.5/cov0.5_1.5fold.pair.$i |head -6667 |tail -6666 >>sample_A.read_cnt
+	awk '{print $1,"_",$3,"NA",$2,"1000",$2}' ../samppairs_cov0.5/fold2/cov0.5_2fold.pair.$i |head -5000 >>sample_A.read_cnt
+	sed -i "s/ /\t/g" sample_A.read_cnt
+	sed -i "s/\t_\t/_/g" sample_A.read_cnt
+
+	awk '{print $3,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.5/nodiff/cov0.5_nofolddiff.pair.$i >sample_B.read_cnt
+	awk '{print $1,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.5/fold1.5/cov0.5_1.5fold.pair.$i |head -6667 |tail -6666 >>sample_B.read_cnt
+	awk '{print $1,"_",$3,"NA",$4,"1000",$4}' ../samppairs_cov0.5/fold2/cov0.5_2fold.pair.$i |head -5000 >>sample_B.read_cnt
+	sed -i "s/ /\t/g" sample_B.read_cnt
+	sed -i "s/\t_\t/_/g" sample_B.read_cnt
+
+	gfold diff -s1 sample_A -s2 sample_B -suf .read_cnt -o cov0.5_results/sampleA-sampleB.$i.diff
+
+done
+rm sample_A.read_cnt
+rm sample_B.read_cnt
+
+
+# summarize GFOLD run results for analysis:
+# table column names are "Coverage","Replicate","Tc1","Tc2","gfold","DEG"
+for i in {1..100}
+do
+grep -v "^#" cov0.01_results/sampleA-sampleB.$i.diff |head -10000 |sed "s/_/ /g"  | awk '{if($4 >=0.95){print "0.01",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.01",'$i',$1,$2,$4,"1"}else{print "0.01",'$i',$1,$2,$4,"0"}}' >> gfold_nofold_sim_all.Tc.count
+grep -v "^#" cov0.01_results/sampleA-sampleB.$i.diff |head -16666 |tail -6666  |sed "s/_/ /g" | awk '{if($4 >=0.95){print "0.01",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.01",'$i',$1,$2,$4,"1"}else{print "0.01",'$i',$1,$2,$4,"0"}}' >> gfold_fold1.5_sim_all.Tc.count
+grep -v "^#" cov0.01_results/sampleA-sampleB.$i.diff |tail -5000 |sed "s/_/ /g" | awk '{if($4 >=0.95){print "0.01",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.01",'$i',$1,$2,$4,"1"}else{print "0.01",'$i',$1,$2,$4,"0"}}' >> gfold_fold2_sim_all.Tc.count
+
+grep -v "^#" cov0.1_results/sampleA-sampleB.$i.diff |head -10000 |sed "s/_/ /g"  | awk '{if($4 >=0.95){print "0.1",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.1",'$i',$1,$2,$4,"1"}else{print "0.1",'$i',$1,$2,$4,"0"}}' >> gfold_nofold_sim_all.Tc.count
+grep -v "^#" cov0.1_results/sampleA-sampleB.$i.diff |head -16666 |tail -6666  |sed "s/_/ /g" | awk '{if($4 >=0.95){print "0.1",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.1",'$i',$1,$2,$4,"1"}else{print "0.1",'$i',$1,$2,$4,"0"}}' >> gfold_fold1.5_sim_all.Tc.count
+grep -v "^#" cov0.1_results/sampleA-sampleB.$i.diff |tail -5000 |sed "s/_/ /g" | awk '{if($4 >=0.95){print "0.1",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.1",'$i',$1,$2,$4,"1"}else{print "0.1",'$i',$1,$2,$4,"0"}}' >> gfold_fold2_sim_all.Tc.count
+
+grep -v "^#" cov0.25_results/sampleA-sampleB.$i.diff |head -10000 |sed "s/_/ /g"  | awk '{if($4 >=0.95){print "0.25",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.25",'$i',$1,$2,$4,"1"}else{print "0.25",'$i',$1,$2,$4,"0"}}' >> gfold_nofold_sim_all.Tc.count
+grep -v "^#" cov0.25_results/sampleA-sampleB.$i.diff |head -16666 |tail -6666  |sed "s/_/ /g" | awk '{if($4 >=0.95){print "0.25",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.25",'$i',$1,$2,$4,"1"}else{print "0.25",'$i',$1,$2,$4,"0"}}' >> gfold_fold1.5_sim_all.Tc.count
+grep -v "^#" cov0.25_results/sampleA-sampleB.$i.diff |tail -5000 |sed "s/_/ /g" | awk '{if($4 >=0.95){print "0.25",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.25",'$i',$1,$2,$4,"1"}else{print "0.25",'$i',$1,$2,$4,"0"}}' >> gfold_fold2_sim_all.Tc.count
+
+grep -v "^#" cov0.5_results/sampleA-sampleB.$i.diff |head -10000 |sed "s/_/ /g"  | awk '{if($4 >=0.95){print "0.5",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.5",'$i',$1,$2,$4,"1"}else{print "0.5",'$i',$1,$2,$4,"0"}}' >> gfold_nofold_sim_all.Tc.count
+grep -v "^#" cov0.5_results/sampleA-sampleB.$i.diff |head -16666 |tail -6666  |sed "s/_/ /g" | awk '{if($4 >=0.95){print "0.5",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.5",'$i',$1,$2,$4,"1"}else{print "0.5",'$i',$1,$2,$4,"0"}}' >> gfold_fold1.5_sim_all.Tc.count
+grep -v "^#" cov0.5_results/sampleA-sampleB.$i.diff |tail -5000 |sed "s/_/ /g" | awk '{if($4 >=0.95){print "0.5",'$i',$1,$2,$4,"1"}else if($4 <=-0.95){print "0.5",'$i',$1,$2,$4,"1"}else{print "0.5",'$i',$1,$2,$4,"0"}}' >> gfold_fold2_sim_all.Tc.count
+
+done
+
+cd ..
+
+fi 
+

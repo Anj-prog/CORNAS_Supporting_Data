@@ -1,0 +1,134 @@
+# scripts to have:
+#	pair_samples.pl
+#	pair_cov.pl
+#	noiseq_loadnrun_sc2_nln.R
+#	noiseq_loadnrun_sc2_tmmnl.R
+#	cornas.R
+
+# files to have:
+#	B_625_625_5spc_repl1_countmatrix.tab
+
+
+# ensure NOISeq and GFOLD are installed, with the later executable from the environment.
+
+
+
+# use compcodeR in R to generate simulated count data:
+library(compcodeR)
+B_625_625 <- generateSyntheticData(dataset = "B_625_625", n.vars = 12500,
+                                   samples.per.cond = 5, n.diffexp = 1250,
+                                   repl.id = 1, seqdepth = 1e7,
+                                   fraction.upregulated = 0.5,
+                                   between.group.diffdisp = FALSE,
+                                   filter.threshold.total = 1,
+                                   filter.threshold.mediancpm = 0,
+                                   fraction.non.overdispersed = 0,
+                                   output.file = "B_625_625_5spc_repl1.rds")
+summarizeSyntheticDataSet(data.set = "B_625_625_5spc_repl1.rds", output.filename = "B_625_625_5spc_repl1_datacheck.html")
+write.table(B_625_625@count.matrix, file="B_625_625_5spc_repl1_countmatrix.tab",sep="\t")
+
+
+# make all possible combinations:
+mkdir pairsAB
+perl pair_samples.pl B_625_625_5spc_repl1_countmatrix.tab
+
+# prepare pseudolengths:
+awk '{print $1,"1000"}' B_625_625_5spc_repl1_countmatrix.tab |tail -12498 >pseudolen.tab
+
+
+# CORNAS 10xless run:
+mkdir CORNAS_10xless_run
+cd CORNAS_10xless_run
+
+for i in {1..5}
+do
+for j in {6..10}
+do
+perl ../pair_cov.pl ../cov_est.tab $i $j 4
+Rscript ../cornas.R cornas.config ../pairsAB/B_625_625_5spc_repl1-$i.$j.tab >B_625_625_5spc_repl1.pair.$i.$j  
+
+done
+done
+rm cornas.config
+
+cd ..
+
+
+
+# CORNAS 100xless run:
+mkdir CORNAS_100xless_run
+cd CORNAS_100xless_run
+
+for i in {1..5}
+do
+for j in {6..10}
+do
+perl ../pair_cov.pl ../cov_est.tab $i $j 5
+Rscript ../cornas.R cornas.config ../pairsAB/B_625_625_5spc_repl1-$i.$j.tab >B_625_625_5spc_repl1.pair.$i.$j  
+
+done
+done
+rm cornas.config
+
+cd ..
+
+
+
+# NOISeq nln run:
+mkdir NOISeq_nln_run
+cd NOISeq_nln_run
+
+for i in {1..5}
+do
+for j in {6..10}
+do
+Rscript ../noiseq_loadnrun_sc2_nln.R pseudolen.tab ../pairsAB/B_625_625_5spc_repl1-$i.$j.tab B_625_625_5spc_repl1.pair.$i.$j  
+done
+done
+
+cd ..
+
+
+# NOISeq tmmnl run:
+mkdir NOISeq_tmmnl_run
+cd NOISeq_tmmnl_run
+
+for i in {1..5}
+do
+for j in {6..10}
+do
+Rscript ../noiseq_loadnrun_sc2_tmmnl.R pseudolen.tab ../pairsAB/B_625_625_5spc_repl1-$i.$j.tab B_625_625_5spc_repl1.pair.$i.$j  
+done
+done
+
+cd ..
+
+
+$ GFOLD run:
+mkdir GFOLD_run
+cd GFOLD_run
+
+# prepare individual sample counts:
+mkdir indv_samples
+for i in {2..11}
+do
+(( j=i-1 ))
+tail -12498 ../B_625_625_5spc_repl1_countmatrix.tab |awk '{print $1,"\t","NA\t",$'$i',"\t1000\t",$'$i'}' |sed "s/ //g" |sed "s/\"//g" >indv_samples/sample_$j.read_cnt
+done
+
+# run all:
+mkdir pairAB_gfold_results
+for i in {1..5}
+do
+for j in {6..10}
+do
+gfold diff -s1 indv_samples/sample_$i -s2 indv_samples/sample_$j -suf .read_cnt -o pairAB_gfold_results/sample$i\VSsample$j\.run1.diff
+done
+done
+
+cd ..
+
+
+# the results are compiled in ppvsen_compcodeRsim.tab and compcodeRsim_study.xlsx
+
+
