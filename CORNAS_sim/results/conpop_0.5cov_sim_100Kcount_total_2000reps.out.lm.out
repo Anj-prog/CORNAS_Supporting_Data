@@ -1,0 +1,45 @@
+***True Count vs Observed Count output*** 
+
+Call:
+lm(formula = V1 ~ rnameN)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.5213 -0.5828  0.1105  0.5163  1.5309 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 7.368e-01  4.360e-03     169   <2e-16 ***
+rnameN      5.000e-01  7.552e-08 6620426   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.6894 on 99998 degrees of freedom
+Multiple R-squared:      1,	Adjusted R-squared:      1 
+F-statistic: 4.383e+13 on 1 and 99998 DF,  p-value: < 2.2e-16
+
+x_INTERCEPT(C) 0.7368456 
+x_GRADIENT(M) 0.4999813 
+
+***Mean vs Var output*** 
+
+Call:
+lm(formula = V1 ~ V2)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1028.23  -239.15    -8.76   203.17   969.33 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 2.640e+02  2.262e+00   116.7   <2e-16 ***
+V2          1.949e+00  1.539e-04 12660.3   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 360.4 on 99998 degrees of freedom
+Multiple R-squared:  0.9994,	Adjusted R-squared:  0.9994 
+F-statistic: 1.603e+08 on 1 and 99998 DF,  p-value: < 2.2e-16
+
+m_INTERCEPT(C) 264.0014 
+m_GRADIENT(M) 1.94904 
