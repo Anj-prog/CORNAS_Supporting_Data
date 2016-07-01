@@ -170,6 +170,6 @@ Consul, P. C. and Jain, G. C. (1973). A generalization of the poisson distributi
 
 ## Section 4: AUTHORS & COPYRIGHT ##
 
-CORNAS was developed by Joel Low Zi-Bin, Tsung Fei Khang & Martti T. Tammi.
+CORNAS was developed by Joel Z.B. Low, Tsung Fei Khang & Martti T. Tammi.
 
 Copyright is under MIT license (see LICENSE.txt).
